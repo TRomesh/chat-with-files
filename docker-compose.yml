@@ -9,11 +9,10 @@ services:
       - "8501:8501"
     depends_on:
       - chromadb
+      - ollama
     environment:
       - CHROMA_URL=http://chromadb:8000
       - OLLAMA_URL=http://host.docker.internal:11434
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
 
   chromadb:
     container_name: chromadb
@@ -32,5 +31,19 @@ services:
       timeout: 10s
       retries: 3
 
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - 11434:11434
+    volumes:
+      - ./ollama/ollama:/root/.ollama
+      - ./entrypoint.sh:/entrypoint.sh
+    container_name: ollama
+    pull_policy: always
+    tty: true
+    restart: always
+    entrypoint: ["/usr/bin/bash", "/entrypoint.sh"]
+
 volumes:
   chromadb_data:
+  ollama_data:
