@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "chat-with-files"
+version = "0.1.0"
+description = "A RAG application to chat with PDF, CSV, XLS files."
+authors = ["Tharaka Romesh <tharakaromesh@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.98.0"
+uvicorn = "^0.22.0"
+requests = "^2.31.0"
+pandas = "^2.0.3"
+openpyxl = "^3.1.2"
+pymupdf = "^1.22.5"
+sentence-transformers = "^2.2.2"
+chromadb = "^0.3.22"
+streamlit = "^1.24.0"
+onnxruntime = "^1.18.1"
+python-multipart = "^0.0.9"
+aiofiles = "^24.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
